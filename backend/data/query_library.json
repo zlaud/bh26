@@ -1,0 +1,166 @@
+{
+  "queries": [
+    {
+      "id": "q_shipping_001",
+      "event_type": "shipping_disruption",
+      "query": "port strike",
+      "priority": "high"
+    },
+    {
+      "id": "q_shipping_002",
+      "event_type": "shipping_disruption",
+      "query": "shipping delay",
+      "priority": "high"
+    },
+    {
+      "id": "q_shipping_003",
+      "event_type": "shipping_disruption",
+      "query": "container shortage",
+      "priority": "medium"
+    },
+    {
+      "id": "q_weather_001",
+      "event_type": "weather_extreme",
+      "query": "crop drought",
+      "priority": "high"
+    },
+    {
+      "id": "q_weather_002",
+      "event_type": "weather_extreme",
+      "query": "harvest flood",
+      "priority": "high"
+    },
+    {
+      "id": "q_weather_003",
+      "event_type": "weather_extreme",
+      "query": "crop freeze",
+      "priority": "medium"
+    },
+    {
+      "id": "q_animal_001",
+      "event_type": "animal_disease",
+      "query": "avian flu",
+      "priority": "high"
+    },
+    {
+      "id": "q_animal_002",
+      "event_type": "animal_disease",
+      "query": "bird flu poultry",
+      "priority": "high"
+    },
+    {
+      "id": "q_animal_003",
+      "event_type": "animal_disease",
+      "query": "swine fever",
+      "priority": "medium"
+    },
+    {
+      "id": "q_crop_001",
+      "event_type": "crop_disease",
+      "query": "crop disease",
+      "priority": "high"
+    },
+    {
+      "id": "q_crop_002",
+      "event_type": "crop_disease",
+      "query": "coffee rust",
+      "priority": "medium"
+    },
+    {
+      "id": "q_trade_001",
+      "event_type": "trade_policy",
+      "query": "food tariffs",
+      "priority": "high"
+    },
+    {
+      "id": "q_trade_002",
+      "event_type": "trade_policy",
+      "query": "food import ban",
+      "priority": "high"
+    },
+    {
+      "id": "q_trade_003",
+      "event_type": "trade_policy",
+      "query": "rice export ban",
+      "priority": "medium"
+    },
+    {
+      "id": "q_conflict_001",
+      "event_type": "conflict_instability",
+      "query": "wheat conflict",
+      "priority": "high"
+    },
+    {
+      "id": "q_conflict_002",
+      "event_type": "conflict_instability",
+      "query": "food sanctions",
+      "priority": "medium"
+    },
+    {
+      "id": "q_fuel_001",
+      "event_type": "fuel_cost_spike",
+      "query": "food energy prices",
+      "priority": "high"
+    },
+    {
+      "id": "q_fuel_002",
+      "event_type": "fuel_cost_spike",
+      "query": "fuel grocery cost",
+      "priority": "medium"
+    },
+    {
+      "id": "q_labor_001",
+      "event_type": "labor_shortage",
+      "query": "farm labor shortage",
+      "priority": "high"
+    },
+    {
+      "id": "q_labor_002",
+      "event_type": "labor_shortage",
+      "query": "food workers strike",
+      "priority": "medium"
+    },
+    {
+      "id": "q_production_001",
+      "event_type": "production_constraint",
+      "query": "food plant closure",
+      "priority": "high"
+    },
+    {
+      "id": "q_production_002",
+      "event_type": "production_constraint",
+      "query": "water shortage agriculture",
+      "priority": "medium"
+    },
+    {
+      "id": "q_recall_001",
+      "event_type": "contamination_recall",
+      "query": "food recall",
+      "priority": "high"
+    },
+    {
+      "id": "q_recall_002",
+      "event_type": "contamination_recall",
+      "query": "salmonella outbreak",
+      "priority": "high"
+    },
+    {
+      "id": "q_currency_001",
+      "event_type": "currency_pressure",
+      "query": "food inflation",
+      "priority": "medium"
+    },
+    {
+      "id": "q_demand_001",
+      "event_type": "demand_surge",
+      "query": "panic buying",
+      "priority": "high"
+    },
+    {
+      "id": "q_demand_002",
+      "event_type": "demand_surge",
+      "query": "grocery shortage",
+      "priority": "medium"
+    }
+  ]
+}
