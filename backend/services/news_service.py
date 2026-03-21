@@ -1,7 +1,9 @@
 import httpx
 import os
-import json
-from db.crud import store_article, article_exists, get_all_articles
+import asyncio
+from db.crud import store_article, get_all_articles, update_article_embedding
+from services.embedding_service import embed_article
+from services.json_loader import load_json
 from dotenv import load_dotenv
 
 load_dotenv()
@@ -10,8 +12,7 @@ NEWS_API_KEY = os.environ["NEWS_API_KEY"]
 NEWS_API_URL = "https://eventregistry.org/api/v1/article/getArticles"
 
 def load_query_library() -> list[dict]:
-    with open("../data/query_library.json") as f:
-        return json.load(f)["queries"]
+    return load_json("query_library.json")["queries"]
 
 async def fetch_articles_for_query(
     client: httpx.AsyncClient,
@@ -70,16 +71,23 @@ async def fetch_all_articles(days_back: int = 7) -> dict:
     skipped = 0
 
     async with httpx.AsyncClient() as client:
-        for query in queries:
-            articles = await fetch_articles_for_query(client, query, days_back)
+        tasks = [
+            fetch_articles_for_query(client, query, days_back)
+            for query in queries
+        ]
+        results = await asyncio.gather(*tasks)
+        
+        for articles in results:
             for article in articles:
-                if not article["url"]:
-                    continue
-                if article_exists(article["url"]):
-                    skipped += 1
-                else:
-                    store_article(article)
+                article_id, is_new = store_article(article)
+                embedding = embed_article(article)
+                if embedding:
+                    update_article_embedding(article_id, embedding)
+                if is_new:
                     new_count += 1
+                else:
+                    skipped += 1
+    
     return {
         "new": new_count,
         "skipped": skipped,
