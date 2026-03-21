@@ -1,10 +1,11 @@
 import httpx
 import os
 import asyncio
-from db.crud import store_article, get_all_articles, update_article_embedding
+from db.crud import store_article, update_article_embedding
 from services.embedding_service import embed_article
 from services.json_loader import load_json
 from dotenv import load_dotenv
+from db.database import articles_col
 
 load_dotenv()
 
@@ -69,6 +70,7 @@ async def fetch_all_articles(days_back: int = 7) -> dict:
     queries = load_query_library()
     new_count = 0
     skipped = 0
+    seen_urls = set()
 
     async with httpx.AsyncClient() as client:
         tasks = [
@@ -79,10 +81,20 @@ async def fetch_all_articles(days_back: int = 7) -> dict:
         
         for articles in results:
             for article in articles:
+                if not article.get("url"):
+                    continue
+                
                 article_id, is_new = store_article(article)
-                embedding = embed_article(article)
-                if embedding:
-                    update_article_embedding(article_id, embedding)
+                
+                if article["url"] not in seen_urls:
+                    seen_urls.add(article["url"])
+                    
+                    existing = articles_col.find_one({"_id": article_id}, {"embedding": 1})
+                    if not existing or not existing.get("embedding"):
+                        embedding = await asyncio.to_thread(embed_article, article)
+                        if embedding:
+                            update_article_embedding(article_id, embedding)
+                
                 if is_new:
                     new_count += 1
                 else:
@@ -91,5 +103,5 @@ async def fetch_all_articles(days_back: int = 7) -> dict:
     return {
         "new": new_count,
         "skipped": skipped,
-        "total": len(get_all_articles())
+        "total": articles_col.count_documents({})
     }

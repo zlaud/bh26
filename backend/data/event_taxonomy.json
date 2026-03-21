@@ -1,0 +1,76 @@
+{
+  "event_types": [
+    {
+      "id": "shipping_disruption",
+      "label": "Shipping disruption",
+      "description": "Port strikes, container shortages, freight delays affecting food imports",
+      "severity_range": [0.3, 1.0]
+    },
+    {
+      "id": "weather_extreme",
+      "label": "Extreme weather",
+      "description": "Floods, droughts, hurricanes, freezes damaging crops or infrastructure",
+      "severity_range": [0.4, 1.0]
+    },
+    {
+      "id": "crop_disease",
+      "label": "Crop disease or pest",
+      "description": "Fungal, bacterial, or pest outbreaks affecting agricultural yield",
+      "severity_range": [0.3, 0.9]
+    },
+    {
+      "id": "animal_disease",
+      "label": "Animal disease outbreak",
+      "description": "Avian flu, foot and mouth, swine fever affecting livestock or poultry",
+      "severity_range": [0.5, 1.0]
+    },
+    {
+      "id": "fuel_cost_spike",
+      "label": "Fuel cost spike",
+      "description": "Rising energy prices increasing transport, farming, and processing costs",
+      "severity_range": [0.2, 0.7]
+    },
+    {
+      "id": "labor_shortage",
+      "label": "Labor shortage",
+      "description": "Farm, processing, or logistics workforce shortages slowing supply",
+      "severity_range": [0.2, 0.7]
+    },
+    {
+      "id": "trade_policy",
+      "label": "Trade policy or tariff",
+      "description": "Import bans, export restrictions, tariffs disrupting food trade flows",
+      "severity_range": [0.3, 0.9]
+    },
+    {
+      "id": "production_constraint",
+      "label": "Production constraint",
+      "description": "Upstream factors reducing agricultural output including input shortages, water scarcity, and processing or facility disruptions. Examples: fertilizer shortage, irrigation restrictions, cannery closure",
+      "severity_range": [0.2, 0.8]
+    },
+    {
+      "id": "currency_pressure",
+      "label": "Currency or inflation pressure",
+      "description": "Exchange rate shifts or broad inflation raising food import costs",
+      "severity_range": [0.2, 0.6]
+    },
+    {
+      "id": "conflict_instability",
+      "label": "Conflict or regional instability",
+      "description": "War, civil unrest, or sanctions disrupting food producing or transit regions",
+      "severity_range": [0.5, 1.0]
+    },
+    {
+      "id": "contamination_recall",
+      "label": "Contamination or recall",
+      "description": "Food safety incidents, recalls, or contamination events reducing supply",
+      "severity_range": [0.4, 1.0]
+    },
+    {
+      "id": "demand_surge",
+      "label": "Demand surge",
+      "description": "Panic buying, export demand spikes, or hoarding straining supply",
+      "severity_range": [0.2, 0.7]
+    }
+  ]
+}

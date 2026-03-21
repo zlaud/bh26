@@ -34,4 +34,7 @@ def embed_query(text: str) -> list[float]:
 
 def embed_article(article: dict) -> list[float]:
     text = f"{article.get('title', '')} {article.get('snippet', '')}"
-    return embed_text(text.strip())
+    text = text.strip()
+    if not text:
+        return []
+    return embed_text(text)

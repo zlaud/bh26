@@ -9,4 +9,12 @@ dependencies = [
     "google>=3.0.0",
     "google-generativeai>=0.8.6",
     "pymongo>=4.16.0",
+    "uagents>=0.24.0",
 ]
+
+[tool.setuptools]
+py-modules = []
+
+[tool.setuptools.packages.find]
+where = ["."]
+include = ["services*", "db*", "utils*", "agents*", "routes*"]

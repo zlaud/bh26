@@ -30,3 +30,32 @@ def update_article_embedding(article_id: str, embedding: list[float]):
         {"_id": article_id},
         {"$set": {"embedding": embedding}}
     )
+
+def find_similar_articles(query_embedding: list[float], top_k: int = 5) -> list[dict]:
+    if not query_embedding:
+        return []
+    
+    pipeline = [
+        {
+            "$vectorSearch": {
+                "index": "article_embeddings",
+                "path": "embedding",
+                "queryVector": query_embedding,
+                "numCandidates": 100,
+                "limit": top_k
+            }
+        },
+        {
+            "$project": {
+                "_id": 0,
+                "id": 1,
+                "title": 1,
+                "source": 1,
+                "snippet": 1,
+                "published_at": 1,
+                "event_type_hint": 1,
+                "score": {"$meta": "vectorSearchScore"}
+            }
+        }
+    ]
+    return list(articles_col.aggregate(pipeline))
