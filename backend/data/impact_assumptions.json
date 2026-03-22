@@ -1,0 +1,307 @@
+{
+  "household_size": 4,
+  "currency": "USD",
+  "scales": [
+    { "id": "100_households", "label": "100 households", "multiplier": 100 },
+    {
+      "id": "1000_households",
+      "label": "1,000 households",
+      "multiplier": 1000
+    },
+    { "id": "campus", "label": "Campus (5,000 people)", "multiplier": 1250 }
+  ],
+  "actions": [
+    {
+      "id": "reduce_beef_once_weekly",
+      "label": "Skip beef once a week",
+      "description": "Replace one weekly beef meal with beans or lentils",
+      "per_household": {
+        "monthly_savings_usd": 18.0,
+        "co2_saved_kg": 23.0,
+        "water_saved_liters": 6800,
+        "food_waste_reduced_kg": 0.5
+      },
+      "assumptions": [
+        {
+          "claim": "Beef produces ~27kg CO2e per kg of food",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "Legumes produce ~2kg CO2e per kg of food",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "Beef requires ~15,400L of water per kg",
+          "source": "Mekonnen & Hoekstra (2010), The green, blue and grey water footprint of farm animals and animal products, Water Footprint Network"
+        },
+        {
+          "claim": "Legumes require ~900L of water per kg",
+          "source": "Mekonnen & Hoekstra (2010), The green, blue and grey water footprint of farm animals and animal products, Water Footprint Network"
+        },
+        {
+          "claim": "Average US household spends ~$18 more per month on beef vs bean equivalent meals",
+          "source": "USDA Economic Research Service (2023), Average Retail Food and Energy Prices"
+        }
+      ]
+    },
+    {
+      "id": "reduce_chicken_once_weekly",
+      "label": "Skip chicken once a week",
+      "description": "Replace one weekly chicken meal with tofu or lentils",
+      "per_household": {
+        "monthly_savings_usd": 10.0,
+        "co2_saved_kg": 5.5,
+        "water_saved_liters": 1500,
+        "food_waste_reduced_kg": 0.3
+      },
+      "assumptions": [
+        {
+          "claim": "Chicken produces ~6.9kg CO2e per kg of food",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "Chicken requires ~4,300L of water per kg",
+          "source": "Mekonnen & Hoekstra (2010), The green, blue and grey water footprint of farm animals and animal products, Water Footprint Network"
+        },
+        {
+          "claim": "Tofu produces ~3kg CO2e per kg of food",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "Average US retail chicken costs ~$2-4 more per meal than tofu or lentil equivalent",
+          "source": "USDA Economic Research Service (2023), Average Retail Food and Energy Prices"
+        }
+      ]
+    },
+    {
+      "id": "swap_bananas_to_apples",
+      "label": "Swap bananas for apples",
+      "description": "Replace imported bananas with domestic apples",
+      "per_household": {
+        "monthly_savings_usd": 4.0,
+        "co2_saved_kg": 1.2,
+        "water_saved_liters": 110,
+        "food_waste_reduced_kg": 0.4
+      },
+      "assumptions": [
+        {
+          "claim": "Bananas produce ~0.86kg CO2e per kg including long-haul refrigerated shipping",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "Domestic apples have significantly lower transport emissions than imported bananas",
+          "source": "Weber & Matthews (2008), Food-Miles and the Relative Climate Impacts of Food Choices, Environmental Science & Technology"
+        },
+        {
+          "claim": "Average US household wastes ~30% of fresh fruit purchased",
+          "source": "USDA Economic Research Service (2020), Household Food Security in the United States"
+        },
+        {
+          "claim": "Bananas require ~790L of water per kg vs ~700L for apples",
+          "source": "Mekonnen & Hoekstra (2010), The green, blue and grey water footprint of crops and crop products, Water Footprint Network"
+        }
+      ]
+    },
+    {
+      "id": "swap_olive_oil_to_vegetable_oil",
+      "label": "Swap olive oil for vegetable oil",
+      "description": "Use domestic vegetable oil instead of imported olive oil",
+      "per_household": {
+        "monthly_savings_usd": 12.0,
+        "co2_saved_kg": 1.8,
+        "water_saved_liters": 400,
+        "food_waste_reduced_kg": 0.1
+      },
+      "assumptions": [
+        {
+          "claim": "Olive oil averages $12-15 per liter at US retail vs $3-4 for vegetable oil",
+          "source": "USDA Economic Research Service (2023), Average Retail Food and Energy Prices"
+        },
+        {
+          "claim": "Olive oil produces ~6kg CO2e per kg vs ~3.5kg for soybean oil",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "Olive oil is entirely import-dependent for US consumers, primarily from Spain and Italy",
+          "source": "USDA Foreign Agricultural Service (2023), Oilseeds: World Markets and Trade"
+        }
+      ]
+    },
+    {
+      "id": "swap_white_rice_to_oats_or_pasta",
+      "label": "Diversify away from white rice",
+      "description": "Shift some rice meals to oats or pasta to reduce single-grain dependence",
+      "per_household": {
+        "monthly_savings_usd": 6.0,
+        "co2_saved_kg": 0.8,
+        "water_saved_liters": 900,
+        "food_waste_reduced_kg": 0.2
+      },
+      "assumptions": [
+        {
+          "claim": "Rice produces ~4kg CO2e per kg due to methane emissions from paddy fields",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "Rice requires ~1,670L of water per kg vs ~1,400L for oats",
+          "source": "Mekonnen & Hoekstra (2010), The green, blue and grey water footprint of crops and crop products, Water Footprint Network"
+        },
+        {
+          "claim": "Over 90% of US rice consumption is import-dependent or regionally concentrated",
+          "source": "USDA Economic Research Service (2023), Rice Outlook"
+        }
+      ]
+    },
+    {
+      "id": "reduce_eggs_reliance",
+      "label": "Reduce egg reliance during avian flu pressure",
+      "description": "Mix in tofu or beans for some egg-based meals",
+      "per_household": {
+        "monthly_savings_usd": 8.0,
+        "co2_saved_kg": 2.1,
+        "water_saved_liters": 520,
+        "food_waste_reduced_kg": 0.3
+      },
+      "assumptions": [
+        {
+          "claim": "Egg prices increased 49% year-over-year during 2022-2023 avian flu outbreak",
+          "source": "US Bureau of Labor Statistics (2023), Consumer Price Index, Eggs"
+        },
+        {
+          "claim": "Eggs produce ~4.5kg CO2e per kg",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "Eggs require ~3,300L of water per kg",
+          "source": "Mekonnen & Hoekstra (2010), The green, blue and grey water footprint of farm animals and animal products, Water Footprint Network"
+        }
+      ]
+    },
+    {
+      "id": "swap_fresh_to_canned_tomatoes",
+      "label": "Shift from fresh to canned tomatoes",
+      "description": "Use canned tomatoes for cooked dishes instead of fresh imported tomatoes",
+      "per_household": {
+        "monthly_savings_usd": 5.0,
+        "co2_saved_kg": 0.6,
+        "water_saved_liters": 300,
+        "food_waste_reduced_kg": 0.8
+      },
+      "assumptions": [
+        {
+          "claim": "Over 60% of fresh tomatoes consumed in the US are imported from Mexico",
+          "source": "USDA Foreign Agricultural Service (2023), Vegetables and Pulses Outlook"
+        },
+        {
+          "claim": "Fresh tomatoes have a household waste rate of ~25% vs near-zero for canned",
+          "source": "ReFED (2021), Insights Engine, Food Waste Data"
+        },
+        {
+          "claim": "Canned tomatoes are predominantly domestically produced in California",
+          "source": "USDA National Agricultural Statistics Service (2023), Vegetables Summary"
+        }
+      ]
+    },
+    {
+      "id": "reduce_avocado_reliance",
+      "label": "Reduce avocado purchases during disruption",
+      "description": "Cut avocado frequency in half during high trade or shipping risk periods",
+      "per_household": {
+        "monthly_savings_usd": 10.0,
+        "co2_saved_kg": 2.0,
+        "water_saved_liters": 1600,
+        "food_waste_reduced_kg": 0.5
+      },
+      "assumptions": [
+        {
+          "claim": "Each avocado requires approximately 320L of water to produce",
+          "source": "Mekonnen & Hoekstra (2010), The green, blue and grey water footprint of crops and crop products, Water Footprint Network"
+        },
+        {
+          "claim": "Over 80% of US avocados are imported from Mexico",
+          "source": "USDA Foreign Agricultural Service (2023), Tropical Fruits: World Markets and Trade"
+        },
+        {
+          "claim": "Avocados have one of the highest household spoilage rates among fresh produce at ~35%",
+          "source": "ReFED (2021), Insights Engine, Food Waste Data"
+        },
+        {
+          "claim": "Avocados produce ~2.5kg CO2e per kg including transport",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        }
+      ]
+    },
+    {
+      "id": "stock_up_shelf_stable_proteins",
+      "label": "Stock up on shelf-stable proteins",
+      "description": "Buy ahead on dried beans, lentils, canned tuna during demand surge signals",
+      "per_household": {
+        "monthly_savings_usd": 14.0,
+        "co2_saved_kg": 0.5,
+        "water_saved_liters": 200,
+        "food_waste_reduced_kg": 0.2
+      },
+      "assumptions": [
+        {
+          "claim": "Retail food prices spike 15-30% during supply disruption events",
+          "source": "USDA Economic Research Service (2023), Food Price Outlook"
+        },
+        {
+          "claim": "Dried legumes have a shelf life of 1-2 years when stored correctly",
+          "source": "USDA Food Safety and Inspection Service (2023), Shelf-Stable Food Safety"
+        },
+        {
+          "claim": "Shelf-stable proteins have near-zero household food waste rates",
+          "source": "ReFED (2021), Insights Engine, Food Waste Data"
+        }
+      ]
+    },
+    {
+      "id": "reduce_coffee_exposure",
+      "label": "Reduce premium coffee brand dependence",
+      "description": "Switch to lower-cost domestic blends during import pressure",
+      "per_household": {
+        "monthly_savings_usd": 9.0,
+        "co2_saved_kg": 1.4,
+        "water_saved_liters": 600,
+        "food_waste_reduced_kg": 0.1
+      },
+      "assumptions": [
+        {
+          "claim": "Coffee production requires ~140L of water per cup or ~18,900L per kg",
+          "source": "Mekonnen & Hoekstra (2010), The green, blue and grey water footprint of crops and crop products, Water Footprint Network"
+        },
+        {
+          "claim": "Coffee produces ~17kg CO2e per kg including processing and shipping",
+          "source": "Poore & Nemecek (2018), Reducing food's environmental impacts through producers and consumers, Science, Vol 360"
+        },
+        {
+          "claim": "100% of coffee consumed in the US is imported",
+          "source": "USDA Foreign Agricultural Service (2023), Coffee: World Markets and Trade"
+        },
+        {
+          "claim": "Premium single-origin coffee costs 2-3x commodity blends at US retail",
+          "source": "USDA Economic Research Service (2023), Average Retail Food and Energy Prices"
+        }
+      ]
+    }
+  ],
+  "scaling": {
+    "method": "linear",
+    "note": "Scale by multiplying per_household values by the scale multiplier. Campus assumes 1,250 households of 4 people totaling 5,000 people.",
+    "equivalences": {
+      "co2_kg_per_car_year": {
+        "value": 4600,
+        "source": "US EPA (2023), Greenhouse Gas Emissions from a Typical Passenger Vehicle"
+      },
+      "water_liters_per_person_day": {
+        "value": 340,
+        "source": "USGS (2023), Water Questions and Answers, US per capita water use"
+      },
+      "food_waste_kg_per_household_year": {
+        "value": 94,
+        "source": "ReFED (2021), Insights Engine, US household food waste average"
+      }
+    }
+  }
+}

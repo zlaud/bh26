@@ -1,0 +1,592 @@
+{
+  "substitutions": {
+    "eggs": {
+      "alternatives": [
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Silken tofu works for scrambles and quiches"
+        },
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "Mashed beans as binding substitute in baking"
+        }
+      ]
+    },
+    "chicken": {
+      "alternatives": [
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "High protein, shelf-stable, much cheaper per serving"
+        },
+        {
+          "id": "canned_tuna",
+          "label": "Canned tuna",
+          "notes": "Quick protein swap for salads and sandwiches"
+        },
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Works well in stir-fries and curries"
+        },
+        {
+          "id": "lentils",
+          "label": "Lentils",
+          "notes": "High protein, cooks faster than beans"
+        }
+      ]
+    },
+    "beef": {
+      "alternatives": [
+        {
+          "id": "pork",
+          "label": "Pork",
+          "notes": "Similar cooking applications, often cheaper"
+        },
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "Black beans work well in tacos and stews"
+        },
+        {
+          "id": "lentils",
+          "label": "Lentils",
+          "notes": "Works well in bolognese and shepherd's pie"
+        },
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Firm tofu crumbles as ground beef substitute"
+        }
+      ]
+    },
+    "pork": {
+      "alternatives": [
+        {
+          "id": "chicken",
+          "label": "Chicken",
+          "notes": "Leaner substitute for most pork dishes"
+        },
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "Works in slow-cooked dishes and stews"
+        },
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Absorbs marinades well as pork substitute"
+        }
+      ]
+    },
+    "canned_tuna": {
+      "alternatives": [
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "White beans work in salads and pasta dishes"
+        },
+        {
+          "id": "peanut_butter",
+          "label": "Peanut butter",
+          "notes": "Shelf-stable protein alternative"
+        },
+        {
+          "id": "lentils",
+          "label": "Lentils",
+          "notes": "Good protein source for salads and bowls"
+        }
+      ]
+    },
+    "tofu": {
+      "alternatives": [
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "Comparable plant protein, shelf-stable"
+        },
+        {
+          "id": "lentils",
+          "label": "Lentils",
+          "notes": "High protein, versatile in most tofu dishes"
+        },
+        {
+          "id": "eggs",
+          "label": "Eggs",
+          "notes": "Works for scramble-style dishes"
+        }
+      ]
+    },
+    "dried_beans": {
+      "alternatives": [
+        {
+          "id": "lentils",
+          "label": "Lentils",
+          "notes": "Faster cooking, similar nutritional profile"
+        },
+        {
+          "id": "canned_tuna",
+          "label": "Canned tuna",
+          "notes": "Shelf-stable protein alternative"
+        },
+        {
+          "id": "peanut_butter",
+          "label": "Peanut butter",
+          "notes": "Shelf-stable, high protein pantry staple"
+        }
+      ]
+    },
+    "lentils": {
+      "alternatives": [
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "Similar protein and fiber, longer cook time"
+        },
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Works in soups and curries"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Works as base for veggie patties"
+        }
+      ]
+    },
+    "milk": {
+      "alternatives": [
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Blended silken tofu as protein-rich milk alternative"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Blended oats and water as homemade oat milk"
+        }
+      ]
+    },
+    "butter": {
+      "alternatives": [
+        {
+          "id": "vegetable_oil",
+          "label": "Vegetable oil",
+          "notes": "Direct swap in most baking at 3/4 ratio"
+        },
+        {
+          "id": "olive_oil",
+          "label": "Olive oil",
+          "notes": "Works for sauteing and some baking"
+        },
+        {
+          "id": "peanut_butter",
+          "label": "Peanut butter",
+          "notes": "Works in cookies and some baked goods"
+        }
+      ]
+    },
+    "cheese": {
+      "alternatives": [
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Firm tofu crumbles as feta substitute"
+        },
+        {
+          "id": "peanut_butter",
+          "label": "Peanut butter",
+          "notes": "Adds richness to sauces as cheese alternative"
+        }
+      ]
+    },
+    "yogurt": {
+      "alternatives": [
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Blended silken tofu as yogurt substitute"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Overnight oats as breakfast yogurt replacement"
+        }
+      ]
+    },
+    "bananas": {
+      "alternatives": [
+        {
+          "id": "apples",
+          "label": "Apples",
+          "notes": "Domestic, seasonally stable, good snack swap"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Oatmeal as filling breakfast alternative"
+        },
+        {
+          "id": "peanut_butter",
+          "label": "Peanut butter",
+          "notes": "Calorie-dense snack alternative"
+        }
+      ]
+    },
+    "apples": {
+      "alternatives": [
+        {
+          "id": "bananas",
+          "label": "Bananas",
+          "notes": "Portable fruit swap when apple supply is disrupted"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Oatmeal as filling breakfast alternative"
+        },
+        {
+          "id": "peanut_butter",
+          "label": "Peanut butter",
+          "notes": "Filling snack alternative"
+        }
+      ]
+    },
+    "avocados": {
+      "alternatives": [
+        {
+          "id": "olive_oil",
+          "label": "Olive oil",
+          "notes": "Provides healthy fats in dressings and toast"
+        },
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Blended silken tofu as creamy avocado substitute"
+        },
+        {
+          "id": "peanut_butter",
+          "label": "Peanut butter",
+          "notes": "Calorie-dense healthy fat alternative"
+        }
+      ]
+    },
+    "tomatoes": {
+      "alternatives": [
+        {
+          "id": "canned_tomatoes",
+          "label": "Canned tomatoes",
+          "notes": "Shelf-stable, often more stable supply than fresh"
+        },
+        {
+          "id": "onions",
+          "label": "Onions",
+          "notes": "Adds flavor base in cooked dishes"
+        },
+        {
+          "id": "spinach",
+          "label": "Spinach",
+          "notes": "Fresh produce swap for salads and sandwiches"
+        }
+      ]
+    },
+    "lettuce": {
+      "alternatives": [
+        {
+          "id": "spinach",
+          "label": "Spinach",
+          "notes": "Nutritionally superior, similar fresh use cases"
+        },
+        {
+          "id": "broccoli",
+          "label": "Broccoli",
+          "notes": "Works in salads and bowls"
+        }
+      ]
+    },
+    "spinach": {
+      "alternatives": [
+        {
+          "id": "lettuce",
+          "label": "Lettuce",
+          "notes": "Direct fresh green swap"
+        },
+        {
+          "id": "broccoli",
+          "label": "Broccoli",
+          "notes": "Works cooked in most spinach dishes"
+        },
+        {
+          "id": "canned_tomatoes",
+          "label": "Canned tomatoes",
+          "notes": "Shelf-stable produce for cooked dishes"
+        }
+      ]
+    },
+    "broccoli": {
+      "alternatives": [
+        {
+          "id": "spinach",
+          "label": "Spinach",
+          "notes": "Works in most cooked broccoli dishes"
+        },
+        {
+          "id": "potatoes",
+          "label": "Potatoes",
+          "notes": "Filling vegetable with stable domestic supply"
+        },
+        {
+          "id": "onions",
+          "label": "Onions",
+          "notes": "Adds bulk and flavor to cooked dishes"
+        }
+      ]
+    },
+    "potatoes": {
+      "alternatives": [
+        {
+          "id": "white_rice",
+          "label": "White rice",
+          "notes": "Shelf-stable carb with similar filling properties"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Shelf-stable, filling breakfast or side"
+        },
+        {
+          "id": "pasta",
+          "label": "Pasta",
+          "notes": "Shelf-stable carb swap for most potato dishes"
+        }
+      ]
+    },
+    "onions": {
+      "alternatives": [
+        {
+          "id": "potatoes",
+          "label": "Potatoes",
+          "notes": "Filling domestic staple as bulk substitute"
+        },
+        {
+          "id": "canned_tomatoes",
+          "label": "Canned tomatoes",
+          "notes": "Adds flavor base to cooked dishes"
+        },
+        {
+          "id": "spinach",
+          "label": "Spinach",
+          "notes": "Fresh vegetable swap for salads"
+        }
+      ]
+    },
+    "white_rice": {
+      "alternatives": [
+        {
+          "id": "pasta",
+          "label": "Pasta",
+          "notes": "Shelf-stable carb, similar serving applications"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Shelf-stable whole grain alternative"
+        },
+        {
+          "id": "potatoes",
+          "label": "Potatoes",
+          "notes": "Filling domestic starch alternative"
+        },
+        {
+          "id": "flour",
+          "label": "Flour",
+          "notes": "Base for flatbreads and dumplings as rice substitute"
+        }
+      ]
+    },
+    "pasta": {
+      "alternatives": [
+        {
+          "id": "white_rice",
+          "label": "White rice",
+          "notes": "Direct shelf-stable carb swap"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Whole grain alternative for filling meals"
+        },
+        {
+          "id": "potatoes",
+          "label": "Potatoes",
+          "notes": "Filling starch alternative"
+        },
+        {
+          "id": "flour",
+          "label": "Flour",
+          "notes": "Make homemade pasta or flatbreads"
+        }
+      ]
+    },
+    "bread": {
+      "alternatives": [
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Porridge or oat cakes as bread alternative"
+        },
+        {
+          "id": "flour",
+          "label": "Flour",
+          "notes": "Bake flatbreads or simple loaves at home"
+        },
+        {
+          "id": "white_rice",
+          "label": "White rice",
+          "notes": "Filling carb swap for sides and bowls"
+        },
+        {
+          "id": "potatoes",
+          "label": "Potatoes",
+          "notes": "Filling carb swap for sandwiches and sides"
+        }
+      ]
+    },
+    "oats": {
+      "alternatives": [
+        {
+          "id": "white_rice",
+          "label": "White rice",
+          "notes": "Shelf-stable grain alternative for breakfast bowls"
+        },
+        {
+          "id": "flour",
+          "label": "Flour",
+          "notes": "Pancakes or porridge as oat substitute"
+        },
+        {
+          "id": "bread",
+          "label": "Bread",
+          "notes": "Toast as quick breakfast swap"
+        }
+      ]
+    },
+    "flour": {
+      "alternatives": [
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Blended oats as flour substitute in baking"
+        },
+        {
+          "id": "white_rice",
+          "label": "White rice",
+          "notes": "Ground rice as direct baking substitute"
+        },
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "Bean flour as high-protein baking substitute"
+        }
+      ]
+    },
+    "olive_oil": {
+      "alternatives": [
+        {
+          "id": "vegetable_oil",
+          "label": "Vegetable oil",
+          "notes": "Direct cooking substitute, much cheaper"
+        },
+        {
+          "id": "butter",
+          "label": "Butter",
+          "notes": "Works for sauteing and baking"
+        }
+      ]
+    },
+    "vegetable_oil": {
+      "alternatives": [
+        {
+          "id": "olive_oil",
+          "label": "Olive oil",
+          "notes": "Premium substitute for most cooking uses"
+        },
+        {
+          "id": "butter",
+          "label": "Butter",
+          "notes": "Works for sauteing and baking"
+        }
+      ]
+    },
+    "sugar": {
+      "alternatives": [
+        {
+          "id": "bananas",
+          "label": "Bananas",
+          "notes": "Natural sweetener in baking when mashed"
+        },
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Naturally sweet base for desserts and breakfast"
+        }
+      ]
+    },
+    "coffee": {
+      "alternatives": [
+        {
+          "id": "oats",
+          "label": "Oats",
+          "notes": "Oatmeal as energizing morning alternative"
+        },
+        {
+          "id": "peanut_butter",
+          "label": "Peanut butter",
+          "notes": "High energy breakfast alternative"
+        }
+      ]
+    },
+    "canned_tomatoes": {
+      "alternatives": [
+        {
+          "id": "tomatoes",
+          "label": "Fresh tomatoes",
+          "notes": "Use when fresh supply is stable"
+        },
+        {
+          "id": "spinach",
+          "label": "Spinach",
+          "notes": "Adds bulk and nutrition to cooked dishes"
+        },
+        {
+          "id": "onions",
+          "label": "Onions",
+          "notes": "Adds flavor base to cooked dishes"
+        }
+      ]
+    },
+    "peanut_butter": {
+      "alternatives": [
+        {
+          "id": "dried_beans",
+          "label": "Dried beans",
+          "notes": "Shelf-stable protein alternative"
+        },
+        {
+          "id": "lentils",
+          "label": "Lentils",
+          "notes": "High protein shelf-stable swap"
+        },
+        {
+          "id": "tofu",
+          "label": "Tofu",
+          "notes": "Works as protein base in sauces and dips"
+        }
+      ]
+    }
+  }
+}

@@ -1,0 +1,213 @@
+{
+  "weights": {
+    "eggs": {
+      "animal_disease": 0.95,
+      "contamination_recall": 0.85,
+      "demand_surge": 0.7,
+      "production_constraint": 0.6,
+      "labor_shortage": 0.45,
+      "fuel_cost_spike": 0.35
+    },
+    "chicken": {
+      "animal_disease": 0.92,
+      "labor_shortage": 0.6,
+      "production_constraint": 0.55,
+      "fuel_cost_spike": 0.4,
+      "trade_policy": 0.35
+    },
+    "beef": {
+      "animal_disease": 0.8,
+      "weather_extreme": 0.75,
+      "production_constraint": 0.7,
+      "trade_policy": 0.65,
+      "labor_shortage": 0.6,
+      "fuel_cost_spike": 0.4
+    },
+    "pork": {
+      "animal_disease": 0.72,
+      "labor_shortage": 0.52,
+      "trade_policy": 0.48,
+      "production_constraint": 0.38,
+      "fuel_cost_spike": 0.28
+    },
+    "canned_tuna": {
+      "shipping_disruption": 0.65,
+      "contamination_recall": 0.6,
+      "trade_policy": 0.55,
+      "conflict_instability": 0.5,
+      "fuel_cost_spike": 0.32
+    },
+    "tofu": {
+      "weather_extreme": 0.52,
+      "trade_policy": 0.48,
+      "production_constraint": 0.42,
+      "fuel_cost_spike": 0.28
+    },
+    "dried_beans": {
+      "weather_extreme": 0.52,
+      "shipping_disruption": 0.45,
+      "trade_policy": 0.42,
+      "production_constraint": 0.35
+    },
+    "lentils": {
+      "shipping_disruption": 0.55,
+      "weather_extreme": 0.5,
+      "trade_policy": 0.45,
+      "conflict_instability": 0.4
+    },
+    "milk": {
+      "animal_disease": 0.55,
+      "weather_extreme": 0.45,
+      "production_constraint": 0.42,
+      "labor_shortage": 0.38,
+      "fuel_cost_spike": 0.3
+    },
+    "butter": {
+      "animal_disease": 0.5,
+      "production_constraint": 0.45,
+      "demand_surge": 0.4,
+      "fuel_cost_spike": 0.28
+    },
+    "cheese": {
+      "animal_disease": 0.48,
+      "shipping_disruption": 0.42,
+      "trade_policy": 0.4,
+      "production_constraint": 0.35
+    },
+    "yogurt": {
+      "animal_disease": 0.5,
+      "production_constraint": 0.45,
+      "labor_shortage": 0.38,
+      "fuel_cost_spike": 0.28
+    },
+    "bananas": {
+      "trade_policy": 0.85,
+      "shipping_disruption": 0.82,
+      "weather_extreme": 0.7,
+      "crop_disease": 0.65,
+      "fuel_cost_spike": 0.45
+    },
+    "apples": {
+      "weather_extreme": 0.55,
+      "labor_shortage": 0.48,
+      "crop_disease": 0.42,
+      "trade_policy": 0.32
+    },
+    "avocados": {
+      "trade_policy": 0.9,
+      "shipping_disruption": 0.8,
+      "weather_extreme": 0.7,
+      "conflict_instability": 0.65,
+      "production_constraint": 0.55
+    },
+    "tomatoes": {
+      "trade_policy": 0.85,
+      "shipping_disruption": 0.75,
+      "weather_extreme": 0.65,
+      "crop_disease": 0.55,
+      "labor_shortage": 0.45
+    },
+    "lettuce": {
+      "weather_extreme": 0.55,
+      "contamination_recall": 0.7,
+      "labor_shortage": 0.5,
+      "production_constraint": 0.45
+    },
+    "spinach": {
+      "contamination_recall": 0.72,
+      "weather_extreme": 0.55,
+      "labor_shortage": 0.48,
+      "production_constraint": 0.42
+    },
+    "broccoli": {
+      "weather_extreme": 0.52,
+      "labor_shortage": 0.48,
+      "shipping_disruption": 0.42,
+      "crop_disease": 0.38
+    },
+    "potatoes": {
+      "weather_extreme": 0.5,
+      "crop_disease": 0.55,
+      "production_constraint": 0.4,
+      "fuel_cost_spike": 0.28
+    },
+    "onions": {
+      "weather_extreme": 0.45,
+      "contamination_recall": 0.55,
+      "labor_shortage": 0.38,
+      "trade_policy": 0.32
+    },
+    "white_rice": {
+      "trade_policy": 0.88,
+      "weather_extreme": 0.72,
+      "shipping_disruption": 0.7,
+      "demand_surge": 0.65,
+      "conflict_instability": 0.6
+    },
+    "pasta": {
+      "trade_policy": 0.95,
+      "conflict_instability": 0.75,
+      "weather_extreme": 0.65,
+      "fuel_cost_spike": 0.45
+    },
+    "bread": {
+      "conflict_instability": 0.78,
+      "weather_extreme": 0.68,
+      "trade_policy": 0.65,
+      "fuel_cost_spike": 0.5,
+      "labor_shortage": 0.42
+    },
+    "oats": {
+      "weather_extreme": 0.55,
+      "shipping_disruption": 0.45,
+      "trade_policy": 0.42,
+      "production_constraint": 0.38
+    },
+    "flour": {
+      "conflict_instability": 0.8,
+      "weather_extreme": 0.72,
+      "trade_policy": 0.68,
+      "production_constraint": 0.6,
+      "demand_surge": 0.55
+    },
+    "olive_oil": {
+      "weather_extreme": 0.92,
+      "trade_policy": 0.88,
+      "crop_disease": 0.75,
+      "shipping_disruption": 0.65,
+      "currency_pressure": 0.55
+    },
+    "vegetable_oil": {
+      "weather_extreme": 0.55,
+      "conflict_instability": 0.6,
+      "trade_policy": 0.52,
+      "production_constraint": 0.42
+    },
+    "sugar": {
+      "trade_policy": 0.78,
+      "weather_extreme": 0.65,
+      "shipping_disruption": 0.55,
+      "fuel_cost_spike": 0.38
+    },
+    "coffee": {
+      "trade_policy": 0.9,
+      "weather_extreme": 0.82,
+      "crop_disease": 0.75,
+      "shipping_disruption": 0.65,
+      "currency_pressure": 0.55
+    },
+    "canned_tomatoes": {
+      "weather_extreme": 0.48,
+      "production_constraint": 0.45,
+      "demand_surge": 0.42,
+      "labor_shortage": 0.35
+    },
+    "peanut_butter": {
+      "weather_extreme": 0.52,
+      "contamination_recall": 0.65,
+      "crop_disease": 0.48,
+      "production_constraint": 0.42,
+      "demand_surge": 0.38
+    }
+  }
+}

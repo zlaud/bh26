@@ -77,28 +77,43 @@ VALID_EVENT_TYPES = {
 
 SYSTEM_PROMPT = """
 You are a food supply chain analyst with access to tools.
-Extract a structured risk signal from the news article provided.
+Extract ALL structured risk signals present in the news article.
+
+One article may contain multiple distinct signals. Extract each one separately.
 
 Tools available:
 1. find_similar_articles(query) — search MongoDB for corroborating articles
-   to calibrate your severity score. More corroborating articles = higher severity.
-2. get_event_taxonomy() — validate your event_type against the controlled vocabulary.
+2. get_event_taxonomy() — validate event types against controlled vocabulary
 
 Steps:
-1. Read the article
+1. Read the article carefully
 2. Call get_event_taxonomy() to confirm valid event types
-3. Call find_similar_articles() to calibrate severity
-4. Return your structured signal
+3. Identify ALL distinct supply chain risk signals in the article
+4. For each signal call find_similar_articles() to calibrate severity
+5. Return all signals as an array
+
+SEVERITY CALIBRATION GUIDE:
+0.8 - 1.0: Major active disruption. Mass cullings, confirmed export bans,
+            active port strikes, declared disasters, 25%+ tariffs confirmed.
+0.6 - 0.8: Significant pressure. Prices rising 10%+, supply noticeably
+            tighter, policy changes announced, drought confirmed.
+0.4 - 0.6: Moderate emerging signal. Early warnings, minor disruptions,
+            price increases under 10%.
+0.1 - 0.4: Weak or tangential signal. Background noise, speculation.
+
+Do not default to 0.5. Commit to a specific severity based on evidence.
+Current tariff news (25%+ on food imports) warrants 0.7-0.9.
+Active avian flu culling warrants 0.8-0.95.
 
 Valid event_type values:
 shipping_disruption, weather_extreme, crop_disease, animal_disease,
 fuel_cost_spike, labor_shortage, trade_policy, production_constraint,
 currency_pressure, conflict_instability, contamination_recall, demand_surge
 
-Return JSON only:
+Return a JSON array only. Each element:
 {
   "event_type": "one of the valid types",
-  "region": "geographic region e.g. US West Coast",
+  "region": "geographic region",
   "severity": 0.0 to 1.0,
   "confidence": 0.0 to 1.0,
   "affected_supply_chain": "e.g. livestock, imported_produce, wheat",
@@ -106,7 +121,8 @@ Return JSON only:
   "relevant": true
 }
 
-If not food supply relevant return: {"relevant": false}
+If the article has no food supply relevance return: [{"relevant": false}]
+Return a JSON array only. No preamble, no markdown.
 """
 
 TOOLS = [
@@ -146,7 +162,22 @@ def find_similar_articles_tool(query: str) -> list[dict]:
 def get_event_taxonomy_tool() -> dict:
     return load_json("event_taxonomy.json")
 
-def run_signal_extraction(article: ArticleMessage) -> dict | None:
+def validate_signal(data: dict) -> bool:
+    if not data.get("relevant", True):
+        return False
+    required = ["event_type", "region", "severity", "confidence",
+                "affected_supply_chain", "short_explanation"]
+    if not all(k in data for k in required):
+        return False
+    if data["event_type"] not in VALID_EVENT_TYPES:
+        return False
+    if not (0.0 <= float(data["severity"]) <= 1.0):
+        return False
+    if not (0.0 <= float(data["confidence"]) <= 1.0):
+        return False
+    return True
+
+def run_signal_extraction(article: ArticleMessage) -> list[dict]:
     model = genai.GenerativeModel(
         model_name="models/gemini-2.5-flash",
         system_instruction=SYSTEM_PROMPT,
@@ -156,23 +187,17 @@ def run_signal_extraction(article: ArticleMessage) -> dict | None:
     chat = model.start_chat()
     
     user_message = f"""Article title: {article.title}
-                        Source: {article.source}
-                        Published: {article.published_at}
-                        Event type hint: {article.event_type_hint}
+Source: {article.source}
+Published: {article.published_at}
+Event type hint: {article.event_type_hint}
 
-                        Article text:
-                        {article.snippet}
-                    """
+Article text:
+{article.snippet}"""
 
     response = chat.send_message(user_message)
 
-    # Allow up to 3 rounds of tool calling
-    # LLM can iteratively call tools to gather information before final response
-    for _ in range(3):
-        # Validate response structure
-        if not response.candidates or not response.candidates[0].content.parts:
-            return None
-        
+    # Allow up to 4 rounds of tool calling
+    for _ in range(4):
         # Extract any function calls from the response
         tool_calls = [
             part for part in response.candidates[0].content.parts
@@ -187,19 +212,13 @@ def run_signal_extraction(article: ArticleMessage) -> dict | None:
         tool_results = []
         for part in tool_calls:
             fn = part.function_call
-            try:
-                # Route to appropriate tool function
-                if fn.name == "find_similar_articles":
-                    result = find_similar_articles_tool(fn.args.get("query", ""))
-                elif fn.name == "get_event_taxonomy":
-                    result = get_event_taxonomy_tool()
-                else:
-                    result = {"error": "Unknown tool"}
-            except Exception as e:
-                # Catch tool execution errors and return error message to LLM
-                result = {"error": f"Tool execution failed: {str(e)}"}
+            if fn.name == "find_similar_articles":
+                result = find_similar_articles_tool(fn.args.get("query", ""))
+            elif fn.name == "get_event_taxonomy":
+                result = get_event_taxonomy_tool()
+            else:
+                result = {"error": "Unknown tool"}
             
-            # Format tool result for LLM
             tool_results.append({
                 "function_response": {
                     "name": fn.name,
@@ -207,45 +226,22 @@ def run_signal_extraction(article: ArticleMessage) -> dict | None:
                 }
             })
         
-        # Send tool results back to LLM for next turn
         response = chat.send_message(tool_results)
-
-    # Validate final response structure
-    if not response.candidates or not response.candidates[0].content.parts:
-        return None
 
     # Extract and parse JSON from LLM's text response
     for part in response.candidates[0].content.parts:
         if hasattr(part, "text") and part.text:
             try:
                 clean = part.text.strip().replace("```json", "").replace("```", "").strip()
-                return json.loads(clean)
+                parsed = json.loads(clean)
+                if isinstance(parsed, list):
+                    return parsed
+                if isinstance(parsed, dict):
+                    return [parsed]
             except json.JSONDecodeError:
                 continue
     
-    # Return None if no valid JSON found
-    return None
-
-def validate_signal(data: dict) -> bool:
-    if not data.get("relevant", True):
-        return False
-    required = ["event_type", "region", "severity", "confidence",
-                "affected_supply_chain", "short_explanation"]
-    if not all(k in data for k in required):
-        return False
-    if data["event_type"] not in VALID_EVENT_TYPES:
-        return False
-    
-    # Validate numeric fields are in valid range
-    try:
-        if not (0.0 <= float(data["severity"]) <= 1.0):
-            return False
-        if not (0.0 <= float(data["confidence"]) <= 1.0):
-            return False
-    except (ValueError, TypeError):
-        return False
-    
-    return True
+    return []
 
 # Initialize the uAgent with configuration
 # The agent listens on port 8001 for incoming ArticleMessage messages
@@ -258,26 +254,30 @@ signal_risk_agent = Agent(
 
 @signal_risk_agent.on_message(model=ArticleMessage)
 async def handle_article(ctx: Context, sender: str, msg: ArticleMessage):
-    ctx.logger.info(f"Processing: {(msg.title or '')[:60]}")
-    
+    ctx.logger.info(f"Processing: {msg.title[:60]}")
     try:
-        # Run blocking LLM call in thread pool to avoid blocking event loop
-        result = await asyncio.to_thread(run_signal_extraction, msg)
-        
-        # Validate and send successful extraction
-        if result and validate_signal(result):
+        results = run_signal_extraction(msg)
+        valid = [r for r in results if validate_signal(r)]
+
+        if valid:
+            # send back the first valid signal as primary response
+            primary = valid[0]
             await ctx.send(sender, SignalResponse(
                 article_id=msg.article_id,
-                event_type=result["event_type"],
-                region=result["region"],
-                severity=float(result["severity"]),
-                confidence=float(result["confidence"]),
-                affected_supply_chain=result["affected_supply_chain"],
-                short_explanation=result["short_explanation"],
+                event_type=primary["event_type"],
+                region=primary["region"],
+                severity=float(primary["severity"]),
+                confidence=float(primary["confidence"]),
+                affected_supply_chain=primary["affected_supply_chain"],
+                short_explanation=primary["short_explanation"],
                 relevant=True
             ))
+            # store additional signals directly
+            if len(valid) > 1:
+                from db.crud import store_signal
+                for extra in valid[1:]:
+                    store_signal(msg.article_id + f"_{extra['event_type']}", extra)
         else:
-            # Send empty response if extraction failed or article not relevant
             await ctx.send(sender, SignalResponse(
                 article_id=msg.article_id,
                 event_type="", region="",
@@ -286,15 +286,7 @@ async def handle_article(ctx: Context, sender: str, msg: ArticleMessage):
                 relevant=False
             ))
     except Exception as e:
-        # Log error and send empty response to prevent deadlock
         ctx.logger.error(f"Signal extraction failed: {e}")
-        await ctx.send(sender, SignalResponse(
-            article_id=msg.article_id,
-            event_type="", region="",
-            severity=0.0, confidence=0.0,
-            affected_supply_chain="", short_explanation="",
-            relevant=False
-        ))
 
 if __name__ == "__main__":
     signal_risk_agent.run()

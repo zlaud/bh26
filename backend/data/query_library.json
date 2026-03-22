@@ -37,6 +37,12 @@
       "priority": "medium"
     },
     {
+      "id": "q_weather_004",
+      "event_type": "weather_extreme",
+      "query": "olive harvest drought",
+      "priority": "high"
+    },
+    {
       "id": "q_animal_001",
       "event_type": "animal_disease",
       "query": "avian flu",
@@ -53,6 +59,12 @@
       "event_type": "animal_disease",
       "query": "swine fever",
       "priority": "medium"
+    },
+    {
+      "id": "q_animal_004",
+      "event_type": "animal_disease",
+      "query": "H5N1 poultry",
+      "priority": "high"
     },
     {
       "id": "q_crop_001",
@@ -83,6 +95,18 @@
       "event_type": "trade_policy",
       "query": "rice export ban",
       "priority": "medium"
+    },
+    {
+      "id": "q_trade_004",
+      "event_type": "trade_policy",
+      "query": "tariffs food imports",
+      "priority": "high"
+    },
+    {
+      "id": "q_trade_005",
+      "event_type": "trade_policy",
+      "query": "grocery prices tariffs",
+      "priority": "high"
     },
     {
       "id": "q_conflict_001",

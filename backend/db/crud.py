@@ -1,4 +1,4 @@
-from db.database import articles_col
+from db.database import articles_col, signals_col, food_risks_col
 from utils.hashing import hash_url
 from datetime import datetime, timezone
 
@@ -59,3 +59,37 @@ def find_similar_articles(query_embedding: list[float], top_k: int = 5) -> list[
         }
     ]
     return list(articles_col.aggregate(pipeline))
+
+def signal_exists(article_id: str) -> bool:
+    # check if ANY signal exists for this base article_id
+    base_id = article_id.split("_")[0] if "_" in article_id else article_id
+    return signals_col.find_one(
+        {"article_id": {"$regex": f"^{base_id}"}},
+        {"_id": 1}
+    ) is not None
+
+def store_signal(article_id: str, signal: dict):
+    if signal_exists(article_id):
+        return
+    signals_col.insert_one({
+        **signal,
+        "article_id": article_id,
+        "extracted_at": datetime.now(timezone.utc).isoformat()
+    })
+
+def get_all_signals() -> list[dict]:
+    return list(signals_col.find({}, {"_id": 0}))
+
+def upsert_food_risk(risk: dict):
+    food_risks_col.update_one(
+        {"food": risk["food"]},
+        {"$set": {
+            **risk,
+            "updated_at": datetime.now(timezone.utc).isoformat()
+        }},
+        upsert=True
+    )
+
+def get_all_food_risks() -> dict:
+    risks = list(food_risks_col.find({}, {"_id": 0}))
+    return {r["food"]: r for r in risks}

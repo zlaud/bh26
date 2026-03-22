@@ -1,0 +1,708 @@
+{
+  "mappings": {
+    "eggs": {
+      "signals": [
+        {
+          "event_type": "animal_disease",
+          "reason": "Avian flu directly culls laying hen populations"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Energy costs drive feed and transport prices"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Processing facility closures reduce packaging and distribution"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Farm and processing workforce shortages slow output"
+        },
+        {
+          "event_type": "demand_surge",
+          "reason": "Panic buying rapidly depletes egg supply"
+        }
+      ]
+    },
+    "chicken": {
+      "signals": [
+        {
+          "event_type": "animal_disease",
+          "reason": "Avian flu triggers mass poultry culls"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Feed and transport costs rise with energy prices"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Processing plant staffing shortages reduce throughput"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Feed input shortages reduce flock sizes"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Export bans or import tariffs shift domestic supply"
+        }
+      ]
+    },
+    "beef": {
+      "signals": [
+        {
+          "event_type": "animal_disease",
+          "reason": "Foot and mouth or BSE triggers herd culls and trade bans"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Transport and cold chain costs rise significantly"
+        },
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought reduces pasture availability and herd sizes"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Import tariffs or export restrictions affect cross-border supply"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Meatpacking plant shortages slow processing"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Feed grain shortages increase cattle costs"
+        }
+      ]
+    },
+    "pork": {
+      "signals": [
+        {
+          "event_type": "animal_disease",
+          "reason": "African swine fever causes mass herd culls"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Feed and transport costs rise with energy prices"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Processing plant shortages reduce throughput"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Tariffs or retaliatory trade actions affect pork exports"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Feed grain shortages raise production costs"
+        }
+      ]
+    },
+    "canned_tuna": {
+      "signals": [
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Imported seafood is highly sensitive to shipping delays"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Tariffs on imported seafood raise costs"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Fishing and freight fuel costs passed to consumers"
+        },
+        {
+          "event_type": "conflict_instability",
+          "reason": "Instability in Pacific or Southeast Asian fishing regions"
+        },
+        {
+          "event_type": "contamination_recall",
+          "reason": "Seafood recalls rapidly remove supply from shelves"
+        }
+      ]
+    },
+    "tofu": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought or floods damage soy crop yield"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Soy tariffs or export restrictions affect tofu production costs"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Soy input or processing disruptions reduce tofu supply"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Energy costs affect soy processing and transport"
+        }
+      ]
+    },
+    "dried_beans": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought reduces legume yields in key growing regions"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Import tariffs affect Latin American bean supply"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Import-dependent supply sensitive to freight delays"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Input shortages reduce legume crop yields"
+        }
+      ]
+    },
+    "lentils": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought in Canada or India damages lentil harvests"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Export restrictions from major producers reduce global supply"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Highly import-dependent, sensitive to freight delays"
+        },
+        {
+          "event_type": "conflict_instability",
+          "reason": "Instability in South Asian supply regions disrupts exports"
+        }
+      ]
+    },
+    "milk": {
+      "signals": [
+        {
+          "event_type": "animal_disease",
+          "reason": "Disease outbreaks reduce dairy herd productivity"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Cold chain and transport costs rise with energy prices"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Farm and processing workforce shortages reduce output"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Feed shortages increase dairy production costs"
+        },
+        {
+          "event_type": "weather_extreme",
+          "reason": "Heat stress reduces dairy herd milk output"
+        }
+      ]
+    },
+    "butter": {
+      "signals": [
+        {
+          "event_type": "animal_disease",
+          "reason": "Dairy herd disease reduces cream availability"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Processing disruptions reduce butter output"
+        },
+        {
+          "event_type": "demand_surge",
+          "reason": "Baking demand spikes rapidly deplete butter stocks"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Cold chain costs rise with energy prices"
+        }
+      ]
+    },
+    "cheese": {
+      "signals": [
+        {
+          "event_type": "animal_disease",
+          "reason": "Dairy herd disease reduces milk supply for cheese making"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Tariffs on European cheese imports affect premium supply"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Imported cheese varieties sensitive to freight delays"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Processing facility disruptions reduce domestic output"
+        }
+      ]
+    },
+    "yogurt": {
+      "signals": [
+        {
+          "event_type": "animal_disease",
+          "reason": "Dairy herd disease reduces milk supply"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Processing facility disruptions reduce output"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Processing plant staffing shortages slow production"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Cold chain costs rise with energy prices"
+        }
+      ]
+    },
+    "bananas": {
+      "signals": [
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Entirely import-dependent, highly sensitive to port delays"
+        },
+        {
+          "event_type": "weather_extreme",
+          "reason": "Tropical storms and drought damage Central American crops"
+        },
+        {
+          "event_type": "crop_disease",
+          "reason": "Panama disease threatens global banana supply"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Tariffs or export restrictions from producing regions"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Long-haul refrigerated freight costs rise sharply"
+        }
+      ]
+    },
+    "apples": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Late frosts or drought damage domestic apple harvests"
+        },
+        {
+          "event_type": "crop_disease",
+          "reason": "Fire blight or other orchard diseases reduce yields"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Seasonal harvest labor shortages leave crops unpicked"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Chilean import tariffs affect off-season supply"
+        }
+      ]
+    },
+    "avocados": {
+      "signals": [
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Import-dependent, sensitive to border and freight delays"
+        },
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought in Mexico reduces avocado yields"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "US-Mexico trade tensions directly affect avocado supply"
+        },
+        {
+          "event_type": "conflict_instability",
+          "reason": "Cartel disruptions in Mexican growing regions"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Avocado farming is water-intensive, vulnerable to irrigation restrictions"
+        }
+      ]
+    },
+    "tomatoes": {
+      "signals": [
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Mexico-sourced tomatoes sensitive to border disruptions"
+        },
+        {
+          "event_type": "weather_extreme",
+          "reason": "Frost or drought damages domestic and Mexican harvests"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "US-Mexico tomato trade disputes affect import volumes"
+        },
+        {
+          "event_type": "crop_disease",
+          "reason": "Blight or pest outbreaks reduce tomato yields"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Harvest labor shortages affect picking and packing"
+        }
+      ]
+    },
+    "lettuce": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Heat or drought in California growing regions damages crops"
+        },
+        {
+          "event_type": "contamination_recall",
+          "reason": "E. coli recalls frequently affect leafy green supply"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Harvest labor shortages reduce picking capacity"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Water restrictions in California reduce growing capacity"
+        }
+      ]
+    },
+    "spinach": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Heat damages spinach crops in domestic growing regions"
+        },
+        {
+          "event_type": "contamination_recall",
+          "reason": "Leafy greens frequently subject to E. coli recalls"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Harvest labor shortages reduce picking capacity"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Water restrictions affect California spinach production"
+        }
+      ]
+    },
+    "broccoli": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Frost or heat damages broccoli crops"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Harvest labor shortages reduce picking capacity"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Mexican supply sensitive to border and freight delays"
+        },
+        {
+          "event_type": "crop_disease",
+          "reason": "Pest or fungal outbreaks reduce broccoli yields"
+        }
+      ]
+    },
+    "potatoes": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought or flooding damages potato yields"
+        },
+        {
+          "event_type": "crop_disease",
+          "reason": "Blight historically devastates potato crops"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Storage and processing facility disruptions reduce supply"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Transport costs affect distribution from growing regions"
+        }
+      ]
+    },
+    "onions": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought or excess rain damages onion harvests"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Harvest labor shortages reduce picking capacity"
+        },
+        {
+          "event_type": "contamination_recall",
+          "reason": "Salmonella recalls periodically affect onion supply"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Import tariffs affect Mexican and other foreign onion supply"
+        }
+      ]
+    },
+    "white_rice": {
+      "signals": [
+        {
+          "event_type": "trade_policy",
+          "reason": "Export bans from major producers like India shock global supply"
+        },
+        {
+          "event_type": "weather_extreme",
+          "reason": "Flooding or drought damages Southeast Asian rice harvests"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Import-dependent supply sensitive to freight delays"
+        },
+        {
+          "event_type": "conflict_instability",
+          "reason": "Instability in key Asian producing regions disrupts exports"
+        },
+        {
+          "event_type": "demand_surge",
+          "reason": "Panic buying rapidly depletes rice stocks"
+        }
+      ]
+    },
+    "pasta": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought damages wheat harvests in key growing regions"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Wheat tariffs or export restrictions raise input costs"
+        },
+        {
+          "event_type": "conflict_instability",
+          "reason": "Ukraine-Russia conflict disrupts global wheat supply"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Energy costs affect pasta manufacturing and transport"
+        }
+      ]
+    },
+    "bread": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought reduces domestic and imported wheat yields"
+        },
+        {
+          "event_type": "conflict_instability",
+          "reason": "Global wheat supply disrupted by geopolitical conflict"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Wheat export restrictions raise flour input costs"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Baking energy costs and delivery fuel costs rise"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Bakery and distribution workforce shortages"
+        }
+      ]
+    },
+    "oats": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought in Canada damages oat harvests"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Canadian import tariffs affect oat supply"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Import-dependent supply sensitive to freight delays"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Milling facility disruptions reduce processed oat supply"
+        }
+      ]
+    },
+    "flour": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Wheat crop failures reduce flour production"
+        },
+        {
+          "event_type": "conflict_instability",
+          "reason": "Global wheat supply shocks from geopolitical conflict"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Wheat export bans raise domestic flour costs"
+        },
+        {
+          "event_type": "demand_surge",
+          "reason": "Panic baking demand rapidly depletes flour stocks"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Milling facility disruptions reduce output"
+        }
+      ]
+    },
+    "olive_oil": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought and heat devastate Mediterranean olive harvests"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Entirely import-dependent, sensitive to freight delays"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "EU import tariffs or trade disputes affect pricing"
+        },
+        {
+          "event_type": "crop_disease",
+          "reason": "Xylella bacterium threatens European olive groves"
+        },
+        {
+          "event_type": "currency_pressure",
+          "reason": "Euro-dollar exchange rate directly affects import costs"
+        }
+      ]
+    },
+    "vegetable_oil": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought damages soy and canola crops"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Soy or palm oil tariffs affect input costs"
+        },
+        {
+          "event_type": "conflict_instability",
+          "reason": "Ukraine conflict disrupted global sunflower oil supply"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Refinery or processing disruptions reduce output"
+        }
+      ]
+    },
+    "sugar": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought or flooding damages sugarcane harvests"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Import tariffs or quotas restrict sugar supply"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Import-dependent supply sensitive to freight delays"
+        },
+        {
+          "event_type": "fuel_cost_spike",
+          "reason": "Processing and transport energy costs rise"
+        }
+      ]
+    },
+    "coffee": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought and frost damage Brazilian and Colombian harvests"
+        },
+        {
+          "event_type": "crop_disease",
+          "reason": "Coffee leaf rust devastates crops in producing regions"
+        },
+        {
+          "event_type": "shipping_disruption",
+          "reason": "Entirely import-dependent, sensitive to freight delays"
+        },
+        {
+          "event_type": "trade_policy",
+          "reason": "Export taxes or restrictions from producing countries"
+        },
+        {
+          "event_type": "currency_pressure",
+          "reason": "Dollar strength affects import costs from Latin America"
+        }
+      ]
+    },
+    "canned_tomatoes": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought damages domestic processing tomato harvests"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Cannery facility disruptions reduce processed output"
+        },
+        {
+          "event_type": "labor_shortage",
+          "reason": "Harvest and processing labor shortages reduce supply"
+        },
+        {
+          "event_type": "demand_surge",
+          "reason": "Panic buying rapidly depletes canned goods stock"
+        }
+      ]
+    },
+    "peanut_butter": {
+      "signals": [
+        {
+          "event_type": "weather_extreme",
+          "reason": "Drought damages peanut crop yields in southern states"
+        },
+        {
+          "event_type": "crop_disease",
+          "reason": "Fungal outbreaks reduce peanut harvests"
+        },
+        {
+          "event_type": "production_constraint",
+          "reason": "Processing facility disruptions reduce output"
+        },
+        {
+          "event_type": "contamination_recall",
+          "reason": "Salmonella recalls periodically remove peanut butter from shelves"
+        },
+        {
+          "event_type": "demand_surge",
+          "reason": "Shelf-stable protein demand spikes during disruptions"
+        }
+      ]
+    }
+  }
+}
