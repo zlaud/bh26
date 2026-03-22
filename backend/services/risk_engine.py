@@ -1,7 +1,8 @@
 import json
-from db.crud import get_all_signals, upsert_food_risk, get_all_food_risks, get_all_articles
+from db.crud import get_all_signals, upsert_food_risk, get_all_food_risks, get_all_articles, find_similar_articles
 from utils.scoring import compute_risk_score, score_to_label, get_top_drivers, get_supporting_articles
 from services.json_loader import load_json
+from services.embedding_service import embed_query
 
 def get_evidence_for_food(
     food_id: str,
@@ -29,11 +30,33 @@ def get_evidence_for_food(
         })
     return evidence[:3]
 
-def compute_all_food_risks() -> dict:
+def get_semantic_evidence(
+    food_label: str,
+    top_drivers: list[str]
+) -> list[dict]:
+    query = f"{food_label} supply chain disruption {' '.join(top_drivers[:2])}"
+    query_embedding = embed_query(query)
+    if not query_embedding:
+        return []
+    similar = find_similar_articles(query_embedding, top_k=3)
+    return [
+        {
+            "title": a.get("title", ""),
+            "source": a.get("source", ""),
+            "published_at": a.get("published_at", ""),
+            "relevance_score": round(a.get("score", 0), 3)
+        }
+        for a in similar
+        if a.get("title")
+    ]
+
+def _compute_risks_from_signals(
+    active_signals: list[dict],
+    store: bool = True
+) -> dict:
     weights = load_json("food_signal_weights.json")["weights"]
     signal_map = load_json("grocery_signal_map.json")
     groceries = load_json("groceries.json")["foods"]
-    active_signals = get_all_signals()
 
     articles = get_all_articles()
     articles_by_id = {a["id"]: a for a in articles}
@@ -43,8 +66,13 @@ def compute_all_food_risks() -> dict:
         food_id = food["id"]
         score = compute_risk_score(food_id, active_signals, weights)
         top_drivers = get_top_drivers(food_id, active_signals, weights)
-        supporting_articles = get_supporting_articles(food_id, active_signals, signal_map)
-        evidence = get_evidence_for_food(food_id, active_signals, signal_map, articles_by_id)
+        supporting_articles = get_supporting_articles(
+            food_id, active_signals, signal_map
+        )
+        keyword_evidence = get_evidence_for_food(
+            food_id, active_signals, signal_map, articles_by_id
+        )
+        semantic_evidence = get_semantic_evidence(food["label"], top_drivers)
 
         risk = {
             "food": food_id,
@@ -53,9 +81,27 @@ def compute_all_food_risks() -> dict:
             "risk_label": score_to_label(score),
             "top_drivers": top_drivers,
             "supporting_articles": supporting_articles,
-            "evidence": evidence
+            "evidence": keyword_evidence,
+            "semantic_evidence": semantic_evidence
         }
-        upsert_food_risk(risk)
+
+        if store:
+            upsert_food_risk(risk)
+
         risks[food_id] = risk
 
     return risks
+
+def compute_all_food_risks() -> dict:
+    active_signals = get_all_signals()
+    return _compute_risks_from_signals(active_signals, store=True)
+
+def compute_food_risks_with_injected_signal(injected_signal: dict) -> dict:
+    active_signals = get_all_signals()
+    temp_signal = {
+        **injected_signal,
+        "article_id": "simulated",
+        "extracted_at": "simulated"
+    }
+    augmented_signals = active_signals + [temp_signal]
+    return _compute_risks_from_signals(augmented_signals, store=False)

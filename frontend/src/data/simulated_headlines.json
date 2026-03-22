@@ -1,0 +1,100 @@
+{
+  "headlines": [
+    {
+      "id": "headline_port_strike",
+      "headline": "Port strike disrupts food imports on West Coast",
+      "subheadline": "Shipping delays expected to last 2-3 weeks as labor dispute continues",
+      "source": "Reuters",
+      "published_at": "2026-03-17",
+      "icon": "🚢",
+      "signal": {
+        "event_type": "shipping_disruption",
+        "severity": 0.95,
+        "confidence": 0.92,
+        "region": "US West Coast",
+        "affected_supply_chain": "imported_produce",
+        "short_explanation": "Complete West Coast port shutdown halting all imported food shipments — bananas, avocados, canned tuna, olive oil and coffee face immediate supply cutoff"
+      }
+    },
+    {
+      "id": "headline_avian_flu",
+      "headline": "Avian flu outbreak spreads to Midwest poultry farms",
+      "subheadline": "USDA confirms H5N1 detected across multiple states — culling operations underway",
+      "source": "Associated Press",
+      "published_at": "2026-03-16",
+      "icon": "🐓",
+      "signal": {
+        "event_type": "animal_disease",
+        "severity": 0.97,
+        "confidence": 0.96,
+        "region": "US Midwest",
+        "affected_supply_chain": "livestock",
+        "short_explanation": "H5N1 outbreak culling tens of millions of birds — eggs, chicken, butter and milk face severe supply shock within days"
+      }
+    },
+    {
+      "id": "headline_drought",
+      "headline": "Severe drought conditions threaten California growing season",
+      "subheadline": "Water restrictions imposed across key agricultural regions as reservoirs hit critical lows",
+      "source": "Los Angeles Times",
+      "published_at": "2026-03-15",
+      "icon": "☀️",
+      "signal": {
+        "event_type": "weather_extreme",
+        "severity": 0.94,
+        "confidence": 0.88,
+        "region": "US California",
+        "affected_supply_chain": "domestic_produce",
+        "short_explanation": "Catastrophic drought forcing emergency water shutoffs across California growing regions — lettuce, spinach, tomatoes, broccoli and onions face severe yield collapse"
+      }
+    },
+    {
+      "id": "headline_trade",
+      "headline": "New tariffs announced on key food imports raise grocery cost concerns",
+      "subheadline": "Trade officials confirm broad tariffs on imported food categories effective within 30 days",
+      "source": "Wall Street Journal",
+      "published_at": "2026-03-14",
+      "icon": "📋",
+      "signal": {
+        "event_type": "trade_policy",
+        "severity": 0.96,
+        "confidence": 0.94,
+        "region": "Global",
+        "affected_supply_chain": "imported_goods",
+        "short_explanation": "Sweeping 50-100% tariffs confirmed on all major food import categories — olive oil, coffee, pasta, white rice, sugar and canned tuna face price doubling within 30 days"
+      }
+    },
+    {
+      "id": "headline_fertilizer",
+      "headline": "Strait of Hormuz closure cuts global fertilizer supply by 40%",
+      "subheadline": "Iranian conflict forces closure of critical shipping lane — global grain yields at risk",
+      "source": "Financial Times",
+      "published_at": "2026-03-22",
+      "icon": "🌾",
+      "signal": {
+        "event_type": "conflict_instability",
+        "severity": 0.93,
+        "confidence": 0.87,
+        "region": "Global",
+        "affected_supply_chain": "grain",
+        "short_explanation": "Strait of Hormuz closure eliminating 40% of global fertilizer supply — flour, bread, oats, white rice and pasta face structural yield collapse within one growing season"
+      }
+    },
+    {
+      "id": "headline_contamination",
+      "headline": "Nationwide E. coli outbreak triggers emergency recall of leafy greens",
+      "subheadline": "FDA issues do-not-eat advisory covering lettuce, spinach and mixed greens nationally",
+      "source": "FDA",
+      "published_at": "2026-03-21",
+      "icon": "⚠️",
+      "signal": {
+        "event_type": "contamination_recall",
+        "severity": 0.98,
+        "confidence": 0.99,
+        "region": "United States",
+        "affected_supply_chain": "domestic_produce",
+        "short_explanation": "Emergency nationwide recall of all leafy greens — lettuce, spinach, and salad mixes pulled from all retailers immediately, peanut butter and onions also under investigation"
+      }
+    }
+  ]
+}

@@ -1,6 +1,7 @@
+import asyncio
 from fastapi import APIRouter
 from pydantic import BaseModel
-from services.household_agent import run_household_agent
+from agents.household_agent import run_household_agent
 from services.impact_service import compute_collective_impact
 
 router = APIRouter(prefix="/api/household")
@@ -15,8 +16,8 @@ class ImpactRequest(BaseModel):
 
 @router.post("/analyze")
 async def analyze_household(request: HouseholdRequest):
-    result = await run_household_agent(request.groceries, request.scale_id)
-    return result
+    result = await asyncio.to_thread(run_household_agent, request.groceries, request.scale_id)
+    return result or {"error": "Agent failed to produce results"}
 
 @router.post("/impact")
 def get_collective_impact(request: ImpactRequest):

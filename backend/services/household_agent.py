@@ -1,6 +1,6 @@
 import json
-from db.crud import get_all_food_risks
-from agents.household_agent import run_household_agent as run_household_agent_logic
+from db.crud import get_all_food_risks, get_all_signals
+from agents.coordinator import query_household_agent
 from services.json_loader import load_json
 
 def normalize_grocery_list(raw: str) -> list[str]:
@@ -19,7 +19,25 @@ def normalize_grocery_list(raw: str) -> list[str]:
             normalized.append(label_to_id[item])
     return list(dict.fromkeys(normalized))
 
-def run_household_agent(
+async def _run_agent(
+    user_foods: list[str],
+    food_risks: dict,
+    scale_id: str
+) -> dict | None:
+    result = await query_household_agent(
+        groceries=json.dumps(user_foods),
+        scale_id=scale_id
+    )
+    if result:
+        result["user_foods"] = user_foods
+        result["food_risks"] = {
+            f: food_risks[f]
+            for f in user_foods
+            if f in food_risks
+        }
+    return result
+
+async def run_household_agent(
     raw_grocery_input: str,
     scale_id: str = "100_households"
 ) -> dict | None:
@@ -27,16 +45,16 @@ def run_household_agent(
     if not user_foods:
         return {"error": "No recognized foods in grocery list"}
 
-    groceries_str = ",".join(user_foods)
-    result = run_household_agent_logic(groceries_str, scale_id)
+    food_risks = get_all_food_risks()
+    return await _run_agent(user_foods, food_risks, scale_id)
 
-    if result:
-        food_risks = get_all_food_risks()
-        result["user_foods"] = user_foods
-        result["food_risks"] = {
-            f: food_risks[f]
-            for f in user_foods
-            if f in food_risks
-        }
+async def run_household_agent_with_risks(
+    raw_grocery_input: str,
+    food_risks: dict,
+    scale_id: str = "100_households"
+) -> dict | None:
+    user_foods = normalize_grocery_list(raw_grocery_input)
+    if not user_foods:
+        return {"error": "No recognized foods in grocery list"}
 
-    return result
+    return await _run_agent(user_foods, food_risks, scale_id)

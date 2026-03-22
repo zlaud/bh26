@@ -1,0 +1,221 @@
+{
+  "scope": "national",
+  "risk_thresholds": {
+    "low": { "min": 0.0, "max": 0.39 },
+    "medium": { "min": 0.4, "max": 0.64 },
+    "high": { "min": 0.65, "max": 1.0 }
+  },
+  "procurement_rules": [
+    {
+      "id": "proc_high_perishable_protein",
+      "label": "High risk perishable protein",
+      "condition": {
+        "foods": ["eggs", "chicken", "beef", "pork"],
+        "risk_level": "high"
+      },
+      "recommendation": "Accelerate procurement this week before further price increases. Prioritize frozen formats over fresh to extend shelf life.",
+      "urgency": "immediate",
+      "current_state": "Perishable protein supply is under active pressure with prices already moving.",
+      "trajectory": "Conditions are likely to tighten further before stabilizing. Acting now locks in current pricing.",
+      "rationale": "Perishable proteins at high risk signal imminent price spikes or supply contraction. Early procurement locks in current pricing.",
+      "procurement_note": "Frozen chicken and pork offer best shelf life extension during perishable protein disruptions."
+    },
+    {
+      "id": "proc_medium_perishable_protein",
+      "label": "Medium risk perishable protein",
+      "condition": {
+        "foods": ["eggs", "chicken", "beef", "pork"],
+        "risk_level": "medium"
+      },
+      "recommendation": "Consider buying 1-2 weeks ahead of normal cycle. Begin identifying shelf-stable protein alternatives now.",
+      "urgency": "watch",
+      "current_state": "Early pressure signals detected on perishable proteins. Prices have not moved significantly yet.",
+      "trajectory": "Risk is emerging and may accelerate. Preparation now provides flexibility before conditions worsen.",
+      "rationale": "Medium risk on perishable proteins indicates emerging pressure. Early awareness allows procurement flexibility.",
+      "procurement_note": "Dried beans and lentils are the most cost-effective shelf-stable protein fallback to begin sourcing now."
+    },
+    {
+      "id": "proc_high_imported_produce",
+      "label": "High risk imported produce",
+      "condition": {
+        "foods": ["bananas", "avocados", "tomatoes", "broccoli"],
+        "risk_level": "high"
+      },
+      "recommendation": "Reduce reliance on affected imported produce immediately. Shift procurement toward domestic seasonal alternatives and canned equivalents.",
+      "urgency": "immediate",
+      "current_state": "Imported produce supply chains are actively disrupted with availability already tightening.",
+      "trajectory": "Disruptions are likely to persist or worsen until underlying shipping or trade conditions resolve.",
+      "rationale": "Imported produce is highly sensitive to shipping and border disruptions. Domestic and canned alternatives offer supply chain stability.",
+      "procurement_note": "Potatoes and onions are the most cost-stable domestic produce alternatives with longest shelf life."
+    },
+    {
+      "id": "proc_high_staple_grains",
+      "label": "High risk staple grains",
+      "condition": {
+        "foods": ["white_rice", "flour", "pasta", "bread", "oats"],
+        "risk_level": "high"
+      },
+      "recommendation": "Prioritize bulk procurement of at-risk staple grains immediately. Diversify across grain types to avoid single-grain dependence.",
+      "urgency": "immediate",
+      "current_state": "Staple grain supply is under active pressure from trade, weather, or conflict signals.",
+      "trajectory": "Grain prices typically lag supply shocks by 2-4 weeks. The window to buy ahead at current prices is narrowing.",
+      "rationale": "Staple grains at high risk affect the broadest range of client meals. Bulk buying at current prices protects food bank budgets.",
+      "procurement_note": "Oats offer the best cost-per-calorie ratio among domestic grain alternatives and are predominantly domestically sourced."
+    },
+    {
+      "id": "proc_medium_staple_grains",
+      "label": "Medium risk staple grains",
+      "condition": {
+        "foods": ["white_rice", "flour", "pasta", "bread", "oats"],
+        "risk_level": "medium"
+      },
+      "recommendation": "Increase standard order quantities by 20-30% this cycle. Prioritize shelf-stable formats with longest available expiry.",
+      "urgency": "watch",
+      "current_state": "Early signals suggest grain supply may come under pressure in coming weeks.",
+      "trajectory": "Conditions are emerging. Acting modestly now avoids larger cost exposure if signals strengthen.",
+      "rationale": "Medium grain risk signals emerging pressure on core meal staples. Modest procurement increase now avoids larger cost exposure later.",
+      "procurement_note": "Prioritize pasta and oats over white rice when diversifying — both are domestically sourced and less exposed to export ban risk."
+    },
+    {
+      "id": "proc_high_shelf_stable_protein",
+      "label": "High risk shelf-stable protein",
+      "condition": {
+        "foods": ["dried_beans", "lentils", "canned_tuna", "peanut_butter"],
+        "risk_level": "high"
+      },
+      "recommendation": "Stock up on shelf-stable proteins immediately. These are critical fallback items when perishable proteins are disrupted.",
+      "urgency": "immediate",
+      "current_state": "Shelf-stable protein supply is under active pressure. Demand is rising as perishable protein alternatives are sought.",
+      "trajectory": "Demand for shelf-stable proteins surges during perishable disruptions. Supply tightens quickly. Act before demand spike hits.",
+      "rationale": "Shelf-stable proteins serve as the primary protein backstop during perishable supply disruptions.",
+      "procurement_note": "Dried beans offer best cost-per-gram-of-protein ratio. Peanut butter is calorie-dense and requires no refrigeration."
+    },
+    {
+      "id": "proc_high_cooking_oils",
+      "label": "High risk cooking oils",
+      "condition": {
+        "foods": ["olive_oil", "vegetable_oil"],
+        "risk_level": "high"
+      },
+      "recommendation": "Shift procurement entirely to domestic vegetable oil. Avoid olive oil procurement until risk subsides.",
+      "urgency": "immediate",
+      "current_state": "Cooking oil supply is under active pressure. Olive oil prices are already elevated due to import dependency.",
+      "trajectory": "Olive oil prices are likely to climb further as Mediterranean supply constraints persist. Shift now before vegetable oil demand also spikes.",
+      "rationale": "Olive oil is entirely import-dependent. Domestic vegetable oil provides equivalent cooking functionality at significantly lower cost and risk.",
+      "procurement_note": "Bulk vegetable oil formats offer significant per-unit savings for food bank kitchen programs."
+    },
+    {
+      "id": "proc_high_dairy",
+      "label": "High risk dairy",
+      "condition": {
+        "foods": ["milk", "butter", "cheese", "yogurt"],
+        "risk_level": "high"
+      },
+      "recommendation": "Prioritize shelf-stable dairy formats. Reduce fresh dairy order volumes temporarily.",
+      "urgency": "immediate",
+      "current_state": "Fresh dairy supply is under active pressure with cold chain and herd health signals active.",
+      "trajectory": "Fresh dairy disruptions tend to persist for weeks once animal disease or fuel cost signals are active. Shift to shelf-stable formats now.",
+      "rationale": "Fresh dairy at high risk creates spoilage and budget risk simultaneously. Shelf-stable formats reduce both exposures.",
+      "procurement_note": "Powdered milk and UHT milk are the most practical shelf-stable dairy formats for food bank distribution programs."
+    },
+    {
+      "id": "proc_contamination_any",
+      "label": "Contamination risk — any food",
+      "condition": {
+        "foods": ["eggs", "lettuce", "spinach", "onions", "peanut_butter"],
+        "risk_level": "medium"
+      },
+      "recommendation": "Pause procurement of flagged items immediately. Switch to safe alternatives until contamination risk is cleared.",
+      "urgency": "critical",
+      "current_state": "Active contamination or recall signal detected on one or more foods.",
+      "trajectory": "Contamination events can expand rapidly. Do not wait for confirmation — pause procurement now and source alternatives.",
+      "rationale": "Contamination events require immediate procurement pause regardless of risk score. Client safety is non-negotiable.",
+      "procurement_note": "Canned equivalents and shelf-stable proteins are the safest immediate fallback during fresh produce contamination events."
+    }
+  ],
+  "substitute_categories": [
+    {
+      "id": "sub_perishable_protein_to_shelf_stable",
+      "label": "Perishable protein → shelf-stable protein",
+      "trigger_foods": ["eggs", "chicken", "beef", "pork"],
+      "trigger_risk_level": "high",
+      "substitute_foods": [
+        "dried_beans",
+        "lentils",
+        "canned_tuna",
+        "peanut_butter"
+      ],
+      "urgency": "immediate",
+      "current_state": "Perishable protein supply is actively disrupted.",
+      "trajectory": "Shelf-stable protein demand will rise as perishable supply tightens. Source now before demand spike.",
+      "rationale": "Shelf-stable proteins offer equivalent nutrition with zero spoilage risk and stable supply chains.",
+      "procurement_note": "Dried beans and lentils offer the best cost-per-gram-of-protein ratio for food bank budgets."
+    },
+    {
+      "id": "sub_imported_produce_to_domestic",
+      "label": "Imported produce → domestic produce",
+      "trigger_foods": ["bananas", "avocados", "tomatoes", "broccoli"],
+      "trigger_risk_level": "high",
+      "substitute_foods": [
+        "apples",
+        "potatoes",
+        "onions",
+        "spinach",
+        "canned_tomatoes"
+      ],
+      "urgency": "immediate",
+      "current_state": "Imported produce supply chains are actively disrupted.",
+      "trajectory": "Domestic produce availability will tighten as demand shifts. Move procurement before domestic alternatives also come under pressure.",
+      "rationale": "Domestic produce avoids import and shipping disruption exposure entirely.",
+      "procurement_note": "Potatoes and onions offer exceptional shelf life and cost stability as produce alternatives."
+    },
+    {
+      "id": "sub_fresh_produce_to_canned",
+      "label": "Fresh produce → canned equivalents",
+      "trigger_foods": ["tomatoes", "spinach"],
+      "trigger_risk_level": "medium",
+      "substitute_foods": ["canned_tomatoes"],
+      "urgency": "watch",
+      "current_state": "Fresh produce showing early pressure signals.",
+      "trajectory": "Fresh produce disruptions typically worsen before resolving. Canned alternatives provide stable fallback.",
+      "rationale": "Canned produce eliminates spoilage risk and is predominantly domestically sourced.",
+      "procurement_note": "Canned tomatoes are one of the most versatile and cost-effective pantry staples for food bank meal programs."
+    },
+    {
+      "id": "sub_imported_grain_to_domestic",
+      "label": "Import-dependent grain → domestic grain",
+      "trigger_foods": ["white_rice"],
+      "trigger_risk_level": "high",
+      "substitute_foods": ["oats", "pasta", "flour"],
+      "urgency": "immediate",
+      "current_state": "White rice supply is under active trade or shipping pressure.",
+      "trajectory": "Rice export restrictions from major producers can persist for months. Diversify grain procurement now.",
+      "rationale": "Oats and pasta are predominantly domestically sourced and provide equivalent caloric value.",
+      "procurement_note": "Oats offer the best cost-per-calorie ratio among domestic grain alternatives."
+    },
+    {
+      "id": "sub_imported_oil_to_domestic",
+      "label": "Imported oil → domestic oil",
+      "trigger_foods": ["olive_oil"],
+      "trigger_risk_level": "medium",
+      "substitute_foods": ["vegetable_oil"],
+      "urgency": "watch",
+      "current_state": "Olive oil import pressure is emerging.",
+      "trajectory": "Mediterranean supply constraints are structural and unlikely to resolve quickly. Shift now while vegetable oil is stable.",
+      "rationale": "Domestic vegetable oil is functionally equivalent for cooking at a fraction of the cost.",
+      "procurement_note": "Vegetable oil in bulk formats offers significant savings for food bank kitchen programs."
+    },
+    {
+      "id": "sub_fresh_dairy_to_shelf_stable",
+      "label": "Fresh dairy → shelf-stable alternatives",
+      "trigger_foods": ["milk", "yogurt"],
+      "trigger_risk_level": "high",
+      "substitute_foods": ["peanut_butter", "dried_beans"],
+      "urgency": "immediate",
+      "current_state": "Fresh dairy supply is actively disrupted.",
+      "trajectory": "Dairy disruptions driven by animal disease or fuel costs tend to persist. Shift to shelf-stable formats before fresh supply tightens further.",
+      "rationale": "When fresh dairy is at high risk, shelf-stable proteins provide nutritional fallback without spoilage exposure.",
+      "procurement_note": "Peanut butter is calorie-dense and requires no refrigeration, making it ideal for food bank distribution."
+    }
+  ]
+}

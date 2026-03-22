@@ -76,13 +76,10 @@ Rules:
 Return valid JSON only:
 {
   "summary": "1-2 sentence overview",
-  "top_risks": [{"food": "string", "risk_label": "LOW|MEDIUM|HIGH", "time_horizon": "emerging|active|sustained", "why": "string"}],
+  "food_risks": {"food_name": {"risk_score": 0.0-1.0, "risk_label": "LOW|MEDIUM|HIGH", "top_drivers": ["string"], "evidence": [{"source_title": "headline string", "source_name": "publication name", "source_date": "YYYY-MM-DD", "short_explanation": "1-2 sentence explanation of impact"}]}},
   "patterns": ["string"],
   "strategies": [{"type": "reduce_reliance|diversify|timing_adjustment|partial_substitution|flexible_consumption", "action": "string", "reason": "string"}],
-  "recommendations": [{"food": "string", "action": "string", "why": "string", "estimated_monthly_savings": 0}],
-  "evidence_panel": [{"food": "string", "drivers": ["string"], "headlines": ["string"]}],
-  "collective_impact": {"scale_label": "string", "estimated_savings": 0, "co2_saved_kg": 0, "water_saved_liters": 0, "food_waste_reduced_kg": 0},
-  "impact_explanation": {"summary": "string", "assumptions": ["string"]}
+  "collective_impact": {"scale_label": "string", "estimated_savings": 0, "co2_saved_kg": 0, "water_saved_liters": 0, "food_waste_reduced_kg": 0}
 }
 """
 
