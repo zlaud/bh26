@@ -27,6 +27,7 @@ interface DataContextType {
   foodbankError: string | null;
   refetchFoodbank: () => void;
   householdData: HouseholdResult | null;
+  householdGroceries: string | null;
   householdLoading: boolean;
   householdError: string | null;
   analyzeHouseholdGroceries: (groceries: string, scaleId?: string) => void;
@@ -48,6 +49,9 @@ export function DataProvider({ children }: { children: ReactNode }) {
   const [foodbankError, setFoodbankError] = useState<string | null>(null);
 
   const [householdData, setHouseholdData] = useState<HouseholdResult | null>(
+    null,
+  );
+  const [householdGroceries, setHouseholdGroceries] = useState<string | null>(
     null,
   );
   const [householdLoading, setHouseholdLoading] = useState(true);
@@ -96,7 +100,10 @@ export function DataProvider({ children }: { children: ReactNode }) {
     setHouseholdLoading(true);
     setHouseholdError(null);
     analyzeHousehold(groceries, scaleId)
-      .then(setHouseholdData)
+      .then((data) => {
+        setHouseholdData(data);
+        setHouseholdGroceries(groceries);
+      })
       .catch(() => setHouseholdError("Failed to analyze groceries"))
       .finally(() => setHouseholdLoading(false));
   };
@@ -156,6 +163,7 @@ export function DataProvider({ children }: { children: ReactNode }) {
         foodbankError,
         refetchFoodbank: fetchFoodbank,
         householdData,
+        householdGroceries,
         householdLoading,
         householdError,
         analyzeHouseholdGroceries,

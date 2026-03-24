@@ -1,5 +1,5 @@
 "use client";
-import { useState, useRef } from "react";
+import { useState } from "react";
 import GroceryInput from "@/components/GroceryInput";
 import RiskCard from "@/components/RiskCard";
 import ResilienceScoreCard from "@/components/ResilienceScoreCard";
@@ -7,7 +7,6 @@ import BreakingNewsSimulator from "@/components/BreakingNewsSimulator";
 import CollectiveImpactModal from "@/components/CollectiveImpactSection";
 import { useDataContext } from "@/context/DataContext";
 import { HouseholdResult } from "@/lib/types";
-import { SAMPLE_BASKETS } from "@/lib/constants";
 
 export default function HouseholdPage() {
   const {
@@ -16,55 +15,30 @@ export default function HouseholdPage() {
     householdError,
     analyzeHouseholdGroceries,
   } = useDataContext();
-  const [displayResult, setDisplayResult] = useState<HouseholdResult | null>(
-    null,
-  );
-  const [loading, setLoading] = useState(false);
-  const [error, setError] = useState<string | null>(null);
+
+  const [simulatedResult, setSimulatedResult] =
+    useState<HouseholdResult | null>(null);
   const [simulated, setSimulated] = useState(false);
   const [currentGroceries, setCurrentGroceries] = useState(
     "tofu, lentils, dried_beans, oats, bananas, spinach, broccoli, olive_oil, white_rice",
   );
   const [currentScaleId] = useState("100_households");
-  const lastRealResult = useRef<HouseholdResult | null>(null);
+  // Use simulated result when in simulation mode, otherwise use live data
+  const displayResult = simulated ? simulatedResult : householdData;
 
-  async function handleAnalyze(groceries: string) {
+  function handleAnalyze(groceries: string) {
     setCurrentGroceries(groceries);
     setSimulated(false);
-    setDisplayResult(null);
-    setError(null);
-    setLoading(true);
-
-    // Fake delay to make it look like it's processing
-    await new Promise((resolve) => setTimeout(resolve, 600));
-
-    // Check if we already have cached data
-    if (householdData) {
-      lastRealResult.current = householdData;
-      setDisplayResult(householdData);
-      setLoading(false);
-    } else {
-      // Fetch new data
-      analyzeHouseholdGroceries(groceries);
-      // Wait for data to arrive
-      const checkData = setInterval(() => {
-        if (householdData) {
-          lastRealResult.current = householdData;
-          setDisplayResult(householdData);
-          setLoading(false);
-          clearInterval(checkData);
-        }
-      }, 100);
-    }
+    // Always fetch fresh data from the agent
+    analyzeHouseholdGroceries(groceries);
   }
 
-  function handleSimulatedHeadline(simulatedResult: HouseholdResult) {
-    setDisplayResult(simulatedResult);
+  function handleSimulatedHeadline(result: HouseholdResult) {
+    setSimulatedResult(result);
     setSimulated(true);
   }
 
   function handleClearSimulation() {
-    setDisplayResult(lastRealResult.current);
     setSimulated(false);
   }
 
@@ -87,11 +61,11 @@ export default function HouseholdPage() {
       </div>
 
       <div className="space-y-6">
-        <GroceryInput onAnalyze={handleAnalyze} loading={loading} />
+        <GroceryInput onAnalyze={handleAnalyze} loading={householdLoading} />
 
-        {error && (
+        {householdError && (
           <div className="rounded-xl p-4 text-sm bg-[var(--red-bg)] border border-[var(--red-border)] text-[var(--red)]">
-            {error}
+            {householdError}
           </div>
         )}
 
@@ -192,7 +166,7 @@ export default function HouseholdPage() {
           </>
         )}
 
-        {!displayResult && !loading && (
+        {!displayResult && !householdLoading && (
           <div className="text-center py-20 text-[var(--text3)]">
             <p className="font-serif text-lg text-[var(--text2)]">
               Enter your groceries to see what&apos;s at risk
@@ -201,7 +175,7 @@ export default function HouseholdPage() {
           </div>
         )}
 
-        {loading && (
+        {householdLoading && (
           <div className="text-center py-20">
             <div className="inline-flex items-center gap-3 text-[var(--text2)]">
               <div className="w-4 h-4 border-2 border-t-transparent rounded-full animate-spin border-[var(--accent)] border-t-transparent" />
